@@ -118,4 +118,8 @@ function sendTweet() {
     url = url.replace("CONTENT", textar.value);
 
     console.log(url);
+    chrome.windows.create({
+        url: url,
+        type: "popup"
+    })
 }
