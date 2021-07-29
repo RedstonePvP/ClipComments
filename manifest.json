@@ -1,0 +1,20 @@
+{
+    "name": "Clip Comments",
+    "description": "",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self' https://platform.twitter.com; object-src 'self'",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "https://platform.twitter.com/"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["payload.js"]
+    }]
+  }
+  
