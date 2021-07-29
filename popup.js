@@ -2,6 +2,8 @@ const shows = {
     "Criminal Minds": "crm",
 }
 
+let currentHashtag = null;
+
 document.getElementById("clickme").addEventListener("click", () => {
     updateData();
 })
@@ -59,6 +61,7 @@ function generateHashtag(nm, time, seasonAndEp=false) {
     hashtag += "T"+inc
 
     console.log("#"+hashtag);
+    currentHashtag = hashtag;
 }
 
 function updateData() {
@@ -101,3 +104,18 @@ function updateData() {
 }
 
 updateData();
+
+document.getElementById("sendComment").addEventListener("click", () => {
+    sendTweet();
+})
+
+function sendTweet() {
+    let url = "https://twitter.com/intent/tweet?hashtags=HASHTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
+    let textar = document.getElementById("commentContent");
+
+    url = url.replace("HASHTAG", currentHashtag);
+    url = url.replace("HANDLE", "google"); //placeholder
+    url = url.replace("CONTENT", textar.value);
+
+    console.log(url);
+}

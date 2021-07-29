@@ -39,3 +39,24 @@ body {
 .timeAndRe {
     display: flex;
 }
+
+textarea {
+    width: 98%;
+    border-radius: 3px;
+}
+
+#sendComment {
+    border-radius: 3px;
+    border: none;
+    color: white;
+    background-color: black;
+    padding: 5px;
+}
+
+#sendComment:hover {
+    background-color: rgb(32, 32, 32);
+}
+
+#sendComment:active {
+    background-color: rgb(78, 78, 78);
+}
