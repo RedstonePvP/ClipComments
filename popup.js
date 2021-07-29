@@ -66,28 +66,35 @@ function updateData() {
         var activeTab = tabs[0];
         var activeTabId = activeTab.id;
         if (activeTab.url.includes("netflix.com/watch")) {
-        chrome.tabs.sendRequest(activeTabId, {action: "getDOM"}, function(response) {
-            if (response) {
-                console.log(response.name);
+            document.getElementById("main").classList.remove("hide")
+            document.getElementById("noShow").classList.add("hide")
+            chrome.tabs.sendRequest(activeTabId, {action: "getDOM"}, function(response) {
+                if (response) {
+                    console.log(response.name);
 
-                let time = response.time;
-                time = time.split(" ")[0];
-                document.getElementById("curTime").innerHTML = time;
+                    let time = response.time;
+                    time = time.split(" ")[0];
+                    document.getElementById("curTime").innerHTML = time;
 
-                if (response.type === "show") {
-                    document.getElementById("showName").innerHTML = response.name[0];
-                    document.getElementById("seEp").innerHTML = response.name[1].replace(":", " - ");
-                    
-                    generateHashtag(response.name[0], response.time, response.name[1]);
+                    if (response.type === "show") {
+                        document.getElementById("showName").innerHTML = response.name[0];
+                        document.getElementById("seEp").innerHTML = response.name[1].replace(":", " - ");
+                        
+                        generateHashtag(response.name[0], response.time, response.name[1]);
+                    }
+                    else {
+                        document.getElementById("showName").innerHTML = response.name[0];
+                        document.getElementById("seEp").innerHTML = "Movie";
+
+                        generateHashtag(response.name[0], response.time);
+                    }
                 }
-                else {
-                    document.getElementById("showName").innerHTML = response.name[0];
-                    document.getElementById("seEp").innerHTML = "Movie";
-
-                    generateHashtag(response.name[0], response.time);
-                }
-            }
-          });
+            });
+        }
+        else {
+            //not netflix
+            document.getElementById("main").classList.add("hide")
+            document.getElementById("noShow").classList.remove("hide")
         }
     
      });
