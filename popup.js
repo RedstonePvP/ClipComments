@@ -109,6 +109,10 @@ document.getElementById("sendComment").addEventListener("click", () => {
     sendTweet();
 })
 
+document.getElementById("openTweets").addEventListener("click", () => {
+    viewTweets();
+})
+
 function sendTweet() {
     let url = "https://twitter.com/intent/tweet?hashtags=HASHTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
     let textar = document.getElementById("commentContent");
@@ -117,9 +121,19 @@ function sendTweet() {
     url = url.replace("HANDLE", "google"); //placeholder
     url = url.replace("CONTENT", textar.value);
 
-    console.log(url);
     chrome.windows.create({
         url: url,
         type: "popup"
     })
+}
+
+function viewTweets() {
+    let url = "https://twitter.com/hashtag/HASHTAG";
+    url = url.replace("HASHTAG", currentHashtag);
+
+    chrome.windows.create({
+        url: url,
+        type: "popup"
+    })
+
 }

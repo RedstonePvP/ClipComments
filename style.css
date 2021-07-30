@@ -45,7 +45,7 @@ textarea {
     border-radius: 3px;
 }
 
-#sendComment {
+#sendComment, #openTweets {
     border-radius: 3px;
     border: none;
     color: white;
@@ -53,10 +53,15 @@ textarea {
     padding: 5px;
 }
 
-#sendComment:hover {
+#sendComment:hover, #openTweets:hover {
     background-color: rgb(32, 32, 32);
 }
 
-#sendComment:active {
+#sendComment:active, #openTweets:active {
     background-color: rgb(78, 78, 78);
+}
+
+#openTweets {
+    margin-top: 1rem;
+    width: 100%;
 }
