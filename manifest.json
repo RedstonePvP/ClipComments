@@ -1,7 +1,7 @@
 {
     "name": "Clip Comments",
     "description": "",
-    "version": "0.1",
+    "version": "0.1.5",
     "manifest_version": 2,
     "permissions": [
         "tabs"
@@ -11,7 +11,11 @@
     },
     "content_scripts": [{
         "matches": ["*://*.netflix.com/*"],
-        "js": ["payload.js"]
+        "js": ["netflixPayload.js"]
+    },
+    {
+        "matches": ["*://*.twitter.com/*"],
+        "js": ["twitterPayload.js"]
     }],
     "icons": {
         "32": "logov1-32.png",
