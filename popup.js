@@ -114,26 +114,30 @@ document.getElementById("openTweets").addEventListener("click", () => {
 })
 
 function sendTweet() {
-    let url = "https://twitter.com/intent/tweet?hashtags=HASHTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
     let textar = document.getElementById("commentContent");
+    if (currentHashtag !== null && textar.value !== "") {
+        let url = "https://twitter.com/intent/tweet?hashtags=HASHTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
 
-    url = url.replace("HASHTAG", currentHashtag);
-    url = url.replace("HANDLE", "google"); //placeholder
-    url = url.replace("CONTENT", textar.value);
+        url = url.replace("HASHTAG", currentHashtag);
+        url = url.replace("HANDLE", "ClipComments");
+        url = url.replace("CONTENT", textar.value);
 
-    chrome.windows.create({
-        url: url,
-        type: "popup"
+        chrome.windows.create({
+            url: url,
+            type: "popup"
     })
+    }
 }
 
 function viewTweets() {
-    let url = "https://twitter.com/hashtag/HASHTAG";
-    url = url.replace("HASHTAG", currentHashtag);
+    if (currentHashtag !== null) {
+        let url = "https://twitter.com/hashtag/HASHTAG";
+        url = url.replace("HASHTAG", currentHashtag);
 
-    chrome.windows.create({
-        url: url,
-        type: "popup"
-    })
+        chrome.windows.create({
+            url: url,
+            type: "popup"
+        })
+    }
 
 }
