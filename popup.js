@@ -110,6 +110,17 @@ function updateData() {
 
 updateData();
 
+chrome.storage.sync.get(['url'], function(items) {
+    console.log('Settings retrieved on startup:', items);
+    if(!("url" in items)) {
+        chrome.storage.sync.set({'url': null}, function() {console.log('url null saved');});
+    }
+    else if (items.url !== null) {
+        chrome.storage.sync.get(['url'], function(items) {console.log('url got:', items);});
+        chrome.storage.sync.set({'url': null}, function() {console.log('url null saved - after got');});
+    }
+});
+
 document.getElementById("sendComment").addEventListener("click", () => {
     chrome.storage.sync.set({'wait': true}, function() {console.log('Settings saved');});
     sendTweet();
