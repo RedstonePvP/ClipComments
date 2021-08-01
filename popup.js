@@ -111,10 +111,12 @@ function updateData() {
 updateData();
 
 document.getElementById("sendComment").addEventListener("click", () => {
+    chrome.storage.sync.set({'wait': true}, function() {console.log('Settings saved');});
     sendTweet();
 })
 
 document.getElementById("openTweets").addEventListener("click", () => {
+    chrome.storage.sync.get(['wait'], function(items) {console.log('Settings retrieved', items);});
     viewTweets();
 })
 
