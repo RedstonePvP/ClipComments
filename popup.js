@@ -2,7 +2,9 @@ const shows = {
     "Criminal Minds": "crm",
 }
 
-let currentHashtag = null;
+let timeTag = null;
+let videoTag = null;
+let timeCode = null;
 
 document.getElementById("clickme").addEventListener("click", () => {
     updateData();
@@ -41,7 +43,10 @@ function generateHashtag(nm, time, seasonAndEp=false) {
         hashtag += "M"+name;
     }
 
+    videoTag = hashtag;
+
     time = time.split(" ")[0];
+    timeCode = time;
     time = time.split(":");
     time.reverse();
     let secs = 0;
@@ -61,7 +66,7 @@ function generateHashtag(nm, time, seasonAndEp=false) {
     hashtag += "T"+inc
 
     console.log("#"+hashtag);
-    currentHashtag = hashtag;
+    timeTag = hashtag;
 }
 
 function updateData() {
@@ -115,12 +120,14 @@ document.getElementById("openTweets").addEventListener("click", () => {
 
 function sendTweet() {
     let textar = document.getElementById("commentContent");
-    if (currentHashtag !== null && textar.value !== "") {
-        let url = "https://twitter.com/intent/tweet?hashtags=HASHTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
-
-        url = url.replace("HASHTAG", currentHashtag);
+    if (timeTag !== null && textar.value !== "" && videoTag !== null && timeCode !== null) {
+        let url = "https://twitter.com/intent/tweet?hashtags=TIMETAG&hashtags=VIDEOTAG&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=CONTENT&via=HANDLE";
+        console.log(url);
+        url = url.replace("TIMETAG", timeTag);
+        url = url.replace("VIDEOTAG", videoTag);
         url = url.replace("HANDLE", "ClipComments");
-        url = url.replace("CONTENT", textar.value);
+        url = url.replace("CONTENT", textar.value + ` --- At ${timeCode}`);
+        console.log(url);
 
         chrome.windows.create({
             url: url,
@@ -130,9 +137,9 @@ function sendTweet() {
 }
 
 function viewTweets() {
-    if (currentHashtag !== null) {
+    if (timeTag !== null) {
         let url = "https://twitter.com/hashtag/HASHTAG";
-        url = url.replace("HASHTAG", currentHashtag);
+        url = url.replace("HASHTAG", timeTag);
 
         chrome.windows.create({
             url: url,
