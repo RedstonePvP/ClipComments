@@ -1,7 +1,7 @@
 {
-    "name": "Clip Comments",
+    "name": "Reatix",
     "description": "",
-    "version": "0.1.6",
+    "version": "0.2",
     "manifest_version": 2,
     "permissions": [
         "tabs",
@@ -19,9 +19,9 @@
         "js": ["twitterPayload.js"]
     }],
     "icons": {
-        "32": "logov1-32.png",
-        "64": "logov1-64.png",
-        "128": "logov1-128.png"
+        "32": "icons/logov3-32.png",
+        "64": "icons/logov3-64.png",
+        "128": "icons/logov3-128.png"
     }
   }
   

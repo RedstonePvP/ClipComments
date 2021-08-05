@@ -1,4 +1,4 @@
-# Clip Comments
+# Reatix
 
 ## v0.1 - Final
 this is the readme for beta v0.1, currently the extension can read the data from netflix, genreate a hashtag and allow you to send tweets and read tweets with the corresponding hashtag. I plan to comment all my code at some point. Every tweet also includes a link to the @ClipComments twitter account which will be important in the future when comments are stoted on some sort of backend so they can be show on the extension itself
