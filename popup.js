@@ -138,7 +138,7 @@ function sendTweet() {
         console.log(url);
         url = url.replace("TIMETAG", timeTag);
         url = url.replace("VIDEOTAG", videoTag);
-        url = url.replace("HANDLE", "ClipComments");
+        url = url.replace("HANDLE", "ReatixApp");
         url = url.replace("CONTENT", textar.value + ` --- At ${timeCode}`);
         console.log(url);
 
