@@ -156,7 +156,7 @@ function viewTweets() {
 
         chrome.windows.create({
             url: url,
-            type: "popup"
+            type: "panel"
         })
     }
 
