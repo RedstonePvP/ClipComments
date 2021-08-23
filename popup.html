@@ -5,26 +5,32 @@
     <script defer src="/static/fontaws/js/all.js"></script>
 </head>
 <body>
-    <h1>Reatix *BETA* <a href="/about.html"> Info</a> </h1>
-    <hr>
+    <div class="header">
+        <img src="/static/bigLogo.png" width="150px">
+        <a href="/about.html">Info</a>
+    </div>
     <div class="main" id="main">
         <div class="details">
-            <div>
-                <h1 id="showName">Show Name</h1>
+            <h1 id="showName">Show Name</h1>
+            
+            <div class="detailsln">
                 <h2 id="seEp">S1 - E1</h2>
-            </div>
-            <div class="timeAndRe">
                 <h1 id="curTime">00:00:00</h1>
+            </div>
+            
+            <div class="reloadLn">
                 <button id="clickme"><i class="fas fa-sync-alt"></i></button>
             </div>
+
         </div>
+
         <div class="reply">
             <textarea rows=4 placeholder="Make Comment Here" id="commentContent"></textarea>
             <div style="text-align: right;"><button id="sendComment">Comment</button></div>
         </div>
-        <div class="tweets">
-            <button id="openTweets">View Comments</button>
-        </div>
+    </div>
+    <div class="tweets">
+        <button id="openTweets">View Comments</button>
     </div>
     <div class="noShow hide" id="noShow">
         <h1>Open a Netflix video window to see comments</h1>
